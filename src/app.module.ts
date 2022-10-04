@@ -7,9 +7,19 @@ import { AnnouncementModule } from './announcement/announcement.module';
 import { MailModule } from './mail/mail.module';
 import { CommentModule } from './comment/comment.module';
 import { UserModule } from './user/user.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeormConfig } from './config/typeorm-config';
 
 @Module({
-  imports: [ AuthModule, ArticleModule, AnnouncementModule, MailModule, CommentModule, UserModule],
+  imports: [
+    TypeOrmModule.forRoot(typeormConfig),
+    AuthModule,
+    ArticleModule,
+    AnnouncementModule,
+    MailModule,
+    CommentModule,
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
